@@ -10,6 +10,14 @@ import {AppContext} from '../App';
 
 
 const Register = (props) => {
+  const [firstName, setFirstName] = useState(null);
+  const [lastName, setLastName] = useState(null);
+  const [address, setAddress] = useState(null);
+  const [city, setCity] = useState(null);
+  const [zipCode, setZipCode] = useState(null);
+  const [country, setCountry] = useState(null);
+  const [phone, setPhone] = useState(null);
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [msg, setMsg] = useState('');
@@ -56,7 +64,7 @@ const Register = (props) => {
 
     return(
         <>
-            <h1 style={{display: 'flex', justifyContent: 'center'}}>{props.title} </h1>
+            <h1 style={{display: 'flex', justifyContent: 'center', fontFamily: 'birthday'}}>{props.title} </h1>
             <Card >
       <Card.Header>Please fill out the form to register</Card.Header>
       <Card.Body>

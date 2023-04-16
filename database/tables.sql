@@ -13,7 +13,7 @@ CREATE TABLE Users (
 );
 
 
-CREATE TABLE Event (
+CREATE TABLE Events (
     event_id serial PRIMARY KEY,
     title VARCHAR(255),
     start_date TIMESTAMP NULL,

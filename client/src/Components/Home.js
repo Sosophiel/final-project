@@ -38,14 +38,13 @@ const Home = (props) => {
 
     return(
         <>
-         <h1 style={{display: 'flex', justifyContent: 'center'}}> Your Event Budget Tracker</h1>
+         <h1 style={{display: 'flex', justifyContent: 'center', fontFamily: 'birthday'}}> Your Event Budget Tracker</h1>
 
     <Container className="my -4">
         <Stack className="me-auto">
             <h1> Budgets </h1>
             <input/>
-            <Button variant="primary">Add Budget</Button>
-            <Button variant="outline-primary">Add Expense </Button>
+            
         </Stack>
 
     </Container>        

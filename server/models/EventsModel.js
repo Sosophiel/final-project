@@ -13,10 +13,20 @@ const Events = db.define('Events',
             type: DataTypes.STRING , field: 'title'
         },
         startDate: {
-            type: DataTypes.DATE , field: 'start_date'
+            type: DataTypes.DATE , field: 'start_date',
+            get() {
+                const date = new Date(`${this.dataValues.endDate}`);
+                return `${date.toISOString().split('T')[0]}`;
+                
+            }
         },
         endDate: {
-            type: DataTypes.DATE , field: 'end_date'
+            type: DataTypes.DATE , field: 'end_date',
+            get() {
+                const date = new Date(`${this.dataValues.endDate}`);
+                return `${date.toISOString().split('T')[0]}`;
+                
+            }
         },
         userId: {
             type: DataTypes.INTEGER,     

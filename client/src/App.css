@@ -1,34 +1,37 @@
 body{
-  background-image: url("https://wallpapers.com/images/hd/aesthetically-pleasing-royal-wallpaper-por6uarznxxhtub7.jpg");
+
+  font-family: birthday;
+  background-image: url("https://media.istockphoto.com/id/527726305/photo/glitter-sparkling-backdrop-gold-and-silver.jpg?s=170667a&w=0&k=20&c=sElodjlHkHZlftbxjAynUXLK23OqUepVTPB1E0JKbjo=");
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .titleapp {
-  font-style: italic;
+  font-family: birthday;
   font-size: 100px;
   color: rgb(149, 107, 0);
-  font-family: fantasy;
   border: black 2px;
 }
 
 .navbar{
   list-style-type: none;
-  margin: 0;
   padding: 20px;
-  font-family: fantasy;
-  font-size: 20px;
-  background-color: rgba(255, 255, 255, 0.738);
 }
 
-
-/* li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+.navbar a:hover {
+  background-color: rgba(178, 178, 178, 0.584);
 }
 
-li a:hover {
-  background-color: grey;
-} */
+#navb{
+  font-family: birthday;
+  font-size: x-large;
+
+}
+
+#details a:hover {
+  background-color: rgba(178, 178, 178, 0.584);
+}
+
+#sidemenu a:hover {
+  background-color: rgba(178, 178, 178, 0.584);
+}

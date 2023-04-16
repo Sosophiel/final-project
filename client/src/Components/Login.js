@@ -52,11 +52,11 @@ const Login = (props) => {
 
     return(
         <>
-        <div style={{display: 'flex', justifyContent: 'center'}}>
+        <div style={{display: 'flex', justifyContent: 'center', fontFamily: 'birthday'}}>
            
 
             <Form>
-            <h1 style={{display: 'flex', justifyContent: 'center'}}>LOGIN</h1>
+            <h1 style={{display: 'flex', justifyContent: 'center'}}>Login</h1>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" />
