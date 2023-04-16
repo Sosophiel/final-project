@@ -1,0 +1,34 @@
+body{
+  background-image: url("https://wallpapers.com/images/hd/aesthetically-pleasing-royal-wallpaper-por6uarznxxhtub7.jpg");
+  background-repeat: no-repeat;
+}
+
+.titleapp {
+  font-style: italic;
+  font-size: 100px;
+  color: rgb(149, 107, 0);
+  font-family: fantasy;
+  border: black 2px;
+}
+
+.navbar{
+  list-style-type: none;
+  margin: 0;
+  padding: 20px;
+  font-family: fantasy;
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.738);
+}
+
+
+/* li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: grey;
+} */
