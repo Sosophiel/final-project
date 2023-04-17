@@ -17,23 +17,7 @@ const Login = (props) => {
     },[])
 
     const handleAction = async (title) => {
-        if(title === 'Register'){
-            try {
-                let response = await axios.post('/register', {
-                    email, password
-                });
-                console.log(response.data);
-                setAccessToken()
-                setEmail()
-                setPassword()
-                setMsg(response.data.msg)
-                navigate('/login')
-            } catch (e) {
-                console.log(e.response.data);
-                setMsg(e.response.data.msg)
-            } 
-        }
-        else if (title === 'Login') {
+
             try {
                 let response = await axios.post('/login', {
                     email, password
@@ -46,7 +30,6 @@ const Login = (props) => {
                 console.log(e.response.data);
                 setMsg(e.response.data.msg)
             } 
-        }
     }
 
 

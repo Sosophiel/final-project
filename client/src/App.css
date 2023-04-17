@@ -35,3 +35,12 @@ body{
 #sidemenu a:hover {
   background-color: rgba(178, 178, 178, 0.584);
 }
+
+#btnprimary {
+  color: grey;
+  border-radius: 5%;
+}
+
+#btndelete {
+  color: rgb(255, 0, 0);
+}

@@ -61,8 +61,12 @@ function App() {
           </Col>
           <Col md={11}>
             <Routes>
-              <Route exact path="/(login)" element={LoginContainer()}/>
-              <Route element={DefaultContainer()}/>
+            <Route exact path="/" element={<Login title="Login" />} />
+            <Route path='/login' element={<Login title="Login" />} />
+            <Route path="/register" element={<Register title="Register" />} />
+              <Route path="/reports" element={<Reports title="Reports" />} />
+                <Route path="/events" element={<Events />} />
+                <Route path="/events/:eventId/detail" element={<EventDetails />} />
             </Routes>
           </Col>
         </Row>
