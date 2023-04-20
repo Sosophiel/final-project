@@ -17,8 +17,9 @@ class Events extends React.Component {
         this.state = {
             events: [],
             isLoading: false,
-            show : false,
-            selectedEvent : null
+            showModale : false,
+            showConfirmModale : false,
+            selectedEvent : {eventId : 0}
         };
     }
 
@@ -47,27 +48,31 @@ class Events extends React.Component {
         this.getEvents()
     }
 
-    handleClose = () => this.setState({show:false});
+    handleClose = () => this.setState({showModale:false});
 
     handleShow = (eventId) => {
         if(eventId !== 0 ) {
             const selectedEvent = this.state.events.filter(event => event.eventId === eventId)[0];
-            this.setState({show:true, selectedEvent:selectedEvent})
+            this.setState({showModale:true, selectedEvent:selectedEvent})
         }
         else {
-            this.setState({show:true, selectedEvent:null})
+            this.setState({showModale:true, selectedEvent:{eventId:0}})
         }
     };
 
+    handleShowConfirm = (eventId) => this.setState({showConfirmModale :true})
+
+    handleCloseConfirm = () => this.setState({showConfirmModale:false});
+
     handleChange = (e) => {
         let selectedEvent = this.state.selectedEvent
-        if(selectedEvent) {
+        //if(selectedEvent) {
             selectedEvent[e.target.name] = e.target.value;
             this.setState({selectedEvent :selectedEvent})
-        }
+        //}
     }
 
-    handleSave = async (event) => {
+    handleSave = async () => {
         try {
             //event.preventDefault();
 
@@ -77,7 +82,7 @@ class Events extends React.Component {
 
             let selectedEvent = this.state.selectedEvent
 
-            if(selectedEvent) {
+            if(selectedEvent.eventId !== 0) {
                 const data = {
                     title: selectedEvent.title,
                     startDate: selectedEvent.startDate,
@@ -88,26 +93,32 @@ class Events extends React.Component {
             }
             else {
                 
-
-                
-                // const data = {
-                //     title: this.state.selectedEvent.title,
-                //     startDate: this.state.selectedEvent.startDate,
-                //     endDate: this.state.selectedEvent.endDate,
-                //     userId: 1
-                // }
-    
-                // await axios.post(`/api/users/1/events` , data);
+                const data = {
+                    title: this.state.selectedEvent.title,
+                    startDate: this.state.selectedEvent.startDate,
+                    endDate: this.state.selectedEvent.endDate,
+                    userId: 1
+                }
+                //console.log(data)
+                await axios.post(`/api/users/1/events` , data);
             }
             this.handleClose();
  
-            this.setState({ isLoading: false, selectedEvent: null });
+            this.setState({ isLoading: false, selectedEvent: {eventId:0} });
 
-   
+            await this.getEvents()
 
         } catch (e) {
             console.log(e);
         } 
+    }
+
+    handleDeleteConfirm = async (eventId) => {
+        this.handleShowConfirm(eventId);
+    }
+
+    handleDelete = async (event) => { 
+
     }
 
     render() {
@@ -115,7 +126,7 @@ class Events extends React.Component {
         const isLoading = this.state.isLoading;
         const selectedEvent = this.state.selectedEvent
         let spinner;
-        let label = selectedEvent ? 'Edit Event' : 'New Event'
+        let label = selectedEvent.eventId !== 0 ? 'Edit Event' : 'New Event'
         if (isLoading) {
           spinner = <Spinner animation="border" />;
         } 
@@ -123,7 +134,22 @@ class Events extends React.Component {
         return (
             <>
 
-        <Modal show={this.state.show} onHide={()=>this.handleClose()}>
+    <Modal show={this.state.showConfirmModale} onHide={()=>this.handleCloseConfirm()}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete event</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this event ?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="outline-primary" onClick={()=>this.handleCloseConfirm()}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={()=>this.handleCloseConfirm()}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+        <Modal show={this.state.showModale} onHide={()=>this.handleClose()}>
         <Modal.Header closeButton>
           <Modal.Title>{label}</Modal.Title>
         </Modal.Header>
@@ -145,7 +171,7 @@ class Events extends React.Component {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={()=> this.handleClose()}>Close </Button>
-          <Button variant="primary" onClick={(e)=> this.handleSave(e)}>  Save Changes</Button>
+          <Button variant="primary" onClick={()=> this.handleSave()}>  Save Changes</Button>
         </Modal.Footer>
       </Modal>
 
@@ -179,8 +205,8 @@ class Events extends React.Component {
                                                 <Col md="2">0</Col>
                                                 <Col md="3">
                                                     <Link className="me-2" to={`/events/${event.eventId}/detail`}>Details</Link>
-                                                    <Button variant="primary" className="me-2" onClick={()=> this.handleShow(event.eventId)}>Edit</Button>
-                                                    <Button variant="danger" className="me-2">Delete</Button>
+                                                    <Button variant="primary" className="me-2" id="btnedit" onClick={()=> this.handleShow(event.eventId)}>Edit</Button>
+                                                    <Button variant="danger" className="me-2" id="btndelete" onClick={()=> this.handleDeleteConfirm(event.eventId)}>Delete</Button>
                                                 </Col>
                                                 </Row>
                                             </ListGroup.Item>

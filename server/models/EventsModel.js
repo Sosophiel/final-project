@@ -15,17 +15,21 @@ const Events = db.define('Events',
         startDate: {
             type: DataTypes.DATE , field: 'start_date',
             get() {
-                const date = new Date(`${this.dataValues.endDate}`);
-                return `${date.toISOString().split('T')[0]}`;
-                
+                if(this.dataValues.startDate) {
+                    const date = new Date(`${this.dataValues.startDate}`);
+                    return `${date.toISOString().split('T')[0]}`;
+                }
+                return null
             }
         },
         endDate: {
             type: DataTypes.DATE , field: 'end_date',
             get() {
-                const date = new Date(`${this.dataValues.endDate}`);
-                return `${date.toISOString().split('T')[0]}`;
-                
+                if(this.dataValues.endDate) {
+                    const date = new Date(`${this.dataValues.endDate}`);
+                    return `${date.toISOString().split('T')[0]}`;
+                }
+                return null
             }
         },
         userId: {

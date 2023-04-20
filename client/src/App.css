@@ -1,14 +1,12 @@
 body{
-
-  font-family: birthday;
+  font-family: cursive;
   background-image: url("https://media.istockphoto.com/id/527726305/photo/glitter-sparkling-backdrop-gold-and-silver.jpg?s=170667a&w=0&k=20&c=sElodjlHkHZlftbxjAynUXLK23OqUepVTPB1E0JKbjo=");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .titleapp {
-  font-family: birthday;
-  font-size: 200px;
+  font-size: 500px;
   color: rgb(149, 107, 0);
   border: black 2px;
 }
@@ -23,7 +21,7 @@ body{
 }
 
 #navb{
-  font-family: birthday;
+  font-family: cursive;
   font-size: x-large;
 
 }
@@ -37,10 +35,10 @@ body{
 }
 
 #btnprimary {
-  color: grey;
+  background-color: grey;
   border-radius: 5%;
 }
 
 #btndelete {
-  color: rgb(255, 0, 0);
+  background-color: rgb(241, 44, 44);
 }
